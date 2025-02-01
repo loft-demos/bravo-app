@@ -36,8 +36,8 @@ spec:
           metadata:
             annotations:
               loft.sh/custom-links: >-
-                https://argocd-{{ .Values.loft.virtualClusterName }}.{{
-                .Values.loft.clusterAnnotations.domain }}
+                ArgoCD=https://argocd-{{ .Values.loft.virtualClusterName }}.{{.Values.loft.clusterAnnotations.domain }}
+                PR-App=https://{{ .Values.loft.virtualClusterName }}.{{.Values.loft.clusterAnnotations.domain }}
         apps:
           - name: argocd
             version: 2.13.4
