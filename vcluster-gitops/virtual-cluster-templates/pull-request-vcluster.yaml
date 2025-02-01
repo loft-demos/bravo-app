@@ -158,6 +158,8 @@ spec:
           enabled: true
         helmRelease:
           chart:
+            name: vcluster
+            repo: https://loft-demos.github.io/vcluster-charts
             version: 0.22.3
           values: |-
             external:
@@ -177,14 +179,16 @@ spec:
                 etcd:
                   embedded:
                     enabled: true
-              distro:
-                k8s:
-                  apiServer:
-                    image:
-                      tag:  "{{ .Values.k8sVersion }}"
-                  controllerManager:
-                    image:
-                      tag: "{{ .Values.k8sVersion }}"
+              statefulSet:
+                resources:
+                  # Limits are resource limits for the container
+                  limits:
+                    ephemeral-storage: 8Gi
+                    memory: 2Gi
+                    cpu: 1
+                image:
+                  repository: "loft-demos/vcluster-pro"
+                  tag: "0.22.3-k8s.{{ .Values.k8sVersion }}"
               coredns:
                 embedded: true
         accessPoint:
