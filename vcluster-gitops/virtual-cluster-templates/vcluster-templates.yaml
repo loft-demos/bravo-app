@@ -305,12 +305,12 @@ spec:
               repository: "loft-demos/vcluster-pro"
               tag: "0.22.3-k8s.{{ .Values.k8sVersion }}"
         
-        external:
-          platform:
-            autoSleep:
-              afterInactivity: {{ mul .Values.sleepAfter 60 }}
-            autoDelete:
-              afterInactivity: {{ mul .Values.sleepAfter 120 }}
+        #external:
+          #platform:
+            #autoSleep:
+              #afterInactivity: {{ mul .Values.sleepAfter 60 }}
+            #autoDelete:
+              #afterInactivity: {{ mul .Values.sleepAfter 120 }}
     accessPoint:
       ingress: {}
     spaceTemplate:
