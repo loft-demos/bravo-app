@@ -31,6 +31,27 @@ spec:
       config:
         chart:
           name: argo-cd
+          version: 7.7.22
+          repoURL: https://argoproj.github.io/argo-helm
+        values: '{{ .Values.appValues }}'
+      parameters:
+        - variable: appValues
+          label: Helm Values
+          description: The helm values to use to deploy this chart.
+          type: multiline
+          defaultValue: |-
+            server:
+              ingress:
+                enabled: true
+                hosts:
+                - my-domain.com
+      version: 2.13.4
+      defaultNamespace: argocd
+      wait: true
+    - icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+      config:
+        chart:
+          name: argo-cd
           version: 7.4.4
           repoURL: https://argoproj.github.io/argo-helm
         values: '{{ .Values.appValues }}'
