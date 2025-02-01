@@ -40,7 +40,7 @@ spec:
                 .Values.loft.clusterAnnotations.domain }}
         apps:
           - name: argocd
-            version: 2.12.1
+            version: 2.13.4
             namespace: argocd
             parameters: |
               appValues: |
@@ -58,6 +58,8 @@ spec:
                   params:
                     "server.insecure": true
                     timeout.reconciliation: 0 
+                  secret:
+                    createSecret: true
                   rbac:
                     policy.csv: |-
                       g, Administration, role:admin
@@ -74,6 +76,14 @@ spec:
                     tls: true
                   ingressGrpc:
                     enabled: false
+                controller:
+                  resources:
+                    limits:
+                      cpu: 1000m
+                      memory: 2Gi
+                    requests:
+                      cpu: 250m
+                      memory: 512Mi
                 ## ApplicationSet controller
                 applicationSet:
                   enabled: true
