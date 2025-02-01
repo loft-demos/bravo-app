@@ -37,7 +37,7 @@ spec:
             annotations:
               loft.sh/custom-links: |-
                 ArgoCD=https://argocd-{{ .Values.loft.virtualClusterName }}.{{ .Values.loft.clusterAnnotations.domain }}
-                PR=https://https://github.com/loft-demos/{{ .Values.reponame }}/pull/{{ .Values.prnumber }}
+                PR=https://github.com/loft-demos/{{ .Values.reponame }}/pull/{{ .Values.prnumber }}
                 PR-App=https://{{ .Values.loft.virtualClusterName }}.{{ .Values.loft.clusterAnnotations.domain }}
         apps:
           - name: argocd
